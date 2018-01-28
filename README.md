@@ -1,6 +1,12 @@
 # nerveSeg with pytorch
 
-This is a pytorch code for nerve segmentation by using a 2D-Unet or 3D-UNet. Actually, I also upload two other tasks: infant segmentation and 3T/7T reconstruction.
+This is a pytorch code for nerve segmentation by using a 2D-Unet or 3D-UNet. Actually, I also upload two other tasks: infant segmentation and 3T/7T reconstruction. 
+
+I suppose you have installed:
+  pytorch (I'm using 0.3.0, I think you can use the latest one)
+  torchvision
+  simpleITK
+  numpy
 
 For the nerve-segmentation project: The main entrance is runNerveSeg.py
 
@@ -13,6 +19,10 @@ Steps to run the segmentation task:
 # nerveSeg with caffe
 
 This is a brief introduction for using caffe to conduct the nerve segmentation task.
+
+I suppose you have installed:
+  caffe
+  simpleITK
 
 The main entrance is train_nerveSeg.sh
 
