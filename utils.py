@@ -9,6 +9,12 @@ import torch
 import torch.nn.init
 from torch.autograd import Variable
 
+'''
+Data generator, evluation for one subject and so on.
+Dong Nie
+Jan. 2017
+'''
+
 #Dong add keys here
 def Generator_2D_slices(path_patients,batchsize,inputKey='dataMR',outputKey='dataCT'):
     #path_patients='/home/dongnie/warehouse/CT_patients/test_set/'
