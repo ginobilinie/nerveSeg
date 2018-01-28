@@ -1,4 +1,4 @@
-#By Dong Nie
+#By Dong Nie, Jan. 2018
 # The train/test net protocol buffer definition
 #net: "train_mri_3d.prototxt"
 net: "brainSeg_train_test_23d.prototxt"
