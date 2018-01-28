@@ -1,4 +1,5 @@
 # Simple single-layer network to showcase editing model parameters.
+#By Dong Nie
 layer {
   name: "data"
   type: "HDF5Data"
