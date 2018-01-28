@@ -3,7 +3,7 @@
 This is a pytorch code for nerve segmentation by using a 2D-Unet or 3D-UNet. Actually, I also upload two other tasks: infant segmentation and 3T/7T reconstruction. 
 
 I suppose you have installed:
-  <br> &nbsp;&nbsp pytorch (I'm using 0.3.0, I think you can use the latest one)
+  <br> &nbsp;&nbsp;pytorch (I'm using 0.3.0, I think you can use the latest one)
   <br>  torchvision
   <br>  simpleITK
   <br>  numpy
