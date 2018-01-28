@@ -12,6 +12,8 @@ Steps to run the segmentation task:
 
 # nerveSeg with caffe
 
+This is a brief introduction for using caffe to conduct the nerve segmentation task.
+
 The main entrance is train_nerveSeg.sh
 
 Steps to run the segmentation task:
