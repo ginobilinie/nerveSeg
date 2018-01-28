@@ -1,6 +1,6 @@
 
 '''
-    * Building units for neural networks: residual units, unet units, upsampling unit and so on.
+    * Building units for neural networks: residual units, unet units, upsampling unit, loss functions and so on.
     * Dong Nie
     *Jan. 2017
 '''
