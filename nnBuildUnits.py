@@ -2,6 +2,7 @@
 '''
     * Building units for neural networks: residual units, unet units, upsampling unit and so on.
     * Dong Nie
+    *Jan. 2017
 '''
 import torch
 import torch.nn as nn
@@ -627,72 +628,6 @@ def myDiceLoss4Organs(inputs, targets):
     out = out / denominator
 #     print type(out)
     return out
-
-
-'''
-    Function to calculate the Generalised Dice Loss defined in Sudre, C. et. al.
-     (2017) Generalised Dice overlap as a deep learning loss function for highly
-      unbalanced segmentations. DLMIA 2017
-      The only issue I have is that it may only suits to two types
-Input:
-    prediction: the logits (before softmax)
-    ground_truth: the segmentation ground truth
-    weight_map:
-    type_weight: type of weighting allowed between labels (choice
-    between Square (square of inverse of volume), Simple (inverse of volume)
-    and Uniform (no weighting))
-Output:
-    the loss
-'''
-def generalised_dice_loss(prediction, ground_truth, weight_map=None, type_weight='Square'):
-
-    ground_truth = tf.to_int64(ground_truth)
-    n_voxels = ground_truth.get_shape()[0].value
-    n_classes = prediction.get_shape()[1].value
-    prediction = tf.nn.softmax(prediction)
-    ids = tf.constant(np.arange(n_voxels), dtype=tf.int64)
-    ids = tf.stack([ids, ground_truth], axis=1)
-    one_hot = tf.SparseTensor(indices=ids,
-                              values=tf.ones([n_voxels], dtype=tf.float32),
-                              dense_shape=[n_voxels, n_classes])
-
-    if weight_map is not None:
-        weight_map_nclasses = tf.reshape(
-            tf.tile(weight_map, [n_classes]), prediction.get_shape())
-        ref_vol = tf.sparse_reduce_sum(
-            weight_map_nclasses * one_hot, reduction_axes=[0])
-
-        intersect = tf.sparse_reduce_sum(
-            weight_map_nclasses * one_hot * prediction, reduction_axes=[0])
-        seg_vol = tf.reduce_sum(
-            tf.multiply(weight_map_nclasses, prediction), 0)
-    else:
-        ref_vol = tf.sparse_reduce_sum(one_hot, reduction_axes=[0])
-
-        intersect = tf.sparse_reduce_sum(one_hot * prediction,
-                                         reduction_axes=[0])
-        seg_vol = tf.reduce_sum(prediction, 0)
-    if type_weight == 'Square':
-        weights = tf.reciprocal(tf.square(ref_vol))
-    elif type_weight == 'Simple':
-        weights = tf.reciprocal(ref_vol)
-    elif type_weight == 'Uniform':
-        weights = tf.ones_like(ref_vol)
-    else:
-        raise ValueError("The variable type_weight \"{}\"" \
-                         "is not defined.".format(type_weight))
-    new_weights = tf.where(tf.is_inf(weights), tf.zeros_like(weights), weights)
-    weights = tf.where(tf.is_inf(weights), tf.ones_like(weights) *
-                       tf.reduce_max(new_weights), weights)
-    generalised_dice_numerator = \
-        2 * tf.reduce_sum(tf.multiply(weights, intersect))
-    generalised_dice_denominator = \
-        tf.reduce_sum(tf.multiply(weights, seg_vol + ref_vol))
-    generalised_dice_score = \
-        generalised_dice_numerator / generalised_dice_denominator
-    return 1 - generalised_dice_score
-
-
 
 '''
     This is dice loss for one organ, which means you can compute dice for more than one organs at a time, 
