@@ -1,3 +1,5 @@
 # nerveSeg
 
-This is a pytorch code for segmentation which implements a 3D-UNet.
+This is a pytorch code for nerve segmentation by using a 2D-Unet or 3D-UNet.
+
+The main entrance is runNerveSeg.py
