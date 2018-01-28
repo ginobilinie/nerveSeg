@@ -13,6 +13,12 @@ from Unet3d_pytorch import UNet3D
 from nnBuildUnits import CrossEntropy3d
 import time
 
+'''
+This code is to do the baseline experiment using UNet for infant segmentation.
+By Dong Nie
+Nov. 2017
+'''
+
 # Training settings
 parser = argparse.ArgumentParser(description="PyTorch InfantSeg")
 parser.add_argument("--how2normalize", type=int, default=0, help="how to normalize the data")
