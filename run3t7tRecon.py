@@ -13,6 +13,11 @@ from Unet3d_pytorch import UNet3D
 from nnBuildUnits import CrossEntropy3d
 import time
 
+'''
+This copy of code is to implement a baseline 3T/7T reconstruction network using a 23D-Unet.
+By Dong Nie
+June 2017
+'''
 
 # Training settings
 parser = argparse.ArgumentParser(description="PyTorch InfantSeg")
