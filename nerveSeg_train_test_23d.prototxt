@@ -1,5 +1,5 @@
 # Simple single-layer network to showcase editing model parameters.
-#By Dong Nie
+#By Dong Nie, Jan, 2018
 layer {
   name: "data"
   type: "HDF5Data"
