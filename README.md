@@ -12,3 +12,12 @@ Steps to run the segmentation task:
 
 # nerveSeg with caffe
 
+The main entrance is train_nerveSeg.sh
+
+Steps to run the segmentation task:
+1. use dicom2Nii.py to convert the given dicoms data to nii.gz. This is the most difficult step. You have to do it with great caution. First use this copy of code to deal with the inputs, then use it to deal with the labels (as data and labels are given in different folders). 
+2. use extractSsPatch4NerveSeg.py to generate the hdf5 format data (we use 2D or 3D patch as a basic training unit, and we use hdf5 to store the data)
+3. modify the nerveSeg_train_test_23d.prototxt to your own settings. Basically, you have to modify the data sources to you own's ones and others stuff you want to change.
+4. modify the solver_nerveSeg_23d_adam.prototxt to your prefered hyper-parameters.
+5. bash trainNerveSeg.sh
+6. evaluate your method. Will upload later (I have to log into my own PC to download the code)
