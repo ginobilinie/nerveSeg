@@ -3,6 +3,10 @@ import torch.nn as nn
 import torch.nn.functional as F
 from torch.autograd import Variable
 
+'''
+2D Unet
+'''
+
 class UNetConvBlock(nn.Module):
     def __init__(self, in_size, out_size, kernel_size=3, activation=F.relu):
         super(UNetConvBlock, self).__init__()
